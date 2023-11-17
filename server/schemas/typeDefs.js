@@ -44,7 +44,7 @@ const typeDefs = `
   type Mutation {
     signin(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveWorkout(title: String!, type: [String!], exercises: [Exercise!]): Workout
+    saveWorkout(title: String!, type: [String!], exercises: String): Workout
     follow(_id: Int!): User
   }
 `;

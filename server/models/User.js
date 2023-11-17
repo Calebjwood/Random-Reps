@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const {Workouts} = require('./Workouts')
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -29,7 +29,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  savedWorkouts: [workouts]
+  savedWorkouts: [Workouts]
 });
 
 userSchema.pre('save', async function (next) {

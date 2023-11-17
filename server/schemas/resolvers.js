@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Workout } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -12,6 +12,7 @@ const resolvers = {
     },
     getWorkout: async (parent, args) => {
       // TODO: wacky code for website querying
+      return await Workout.find({})
     },
     getFollowing: async (parent, args, context) => {
       // TODO: return an array of Users that the current user is following

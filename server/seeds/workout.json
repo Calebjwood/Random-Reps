@@ -1,5 +1,4 @@
-[
-    {
+{
         "workout": {
             "title": "test workout",
             "types": ["Legs", "Traditonal"],
@@ -26,6 +25,4 @@
                 }
             ]
         }
-    }
-
-]
+}

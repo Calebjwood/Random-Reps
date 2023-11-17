@@ -8,8 +8,7 @@ const workoutsSchema = new Schema({
     required: true,
   },
   type: [String],
-
-  excercises: [excercises]
+  exercises: [String]
 });
 
 workoutsSchema.virtual('totalTimeInSeconds').get(function () {
