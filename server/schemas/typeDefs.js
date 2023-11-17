@@ -38,7 +38,7 @@ const typeDefs = `
     user: User
     getWorkout: Workout
     getFollowing: [User]
-    searchUsers: [User]
+    searchUsers(username: String!): [User]
   }
 
   type Mutation {

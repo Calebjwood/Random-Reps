@@ -18,6 +18,7 @@ const resolvers = {
     },
     searchUsers: async (parent, args) => {
       // TODO: return an array of users that matches the search query
+      return await User.find({username: args.username})
     }
   },
   Mutation: {
