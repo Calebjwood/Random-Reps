@@ -32,9 +32,9 @@ const userSchema = new Schema({
   savedWorkouts: [workouts],
 
   followers: [{
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }],
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
 
   following: [{
     type: Schema.Types.ObjectId,
@@ -63,6 +63,7 @@ userSchema.virtual('totalTimeInSeconds').get(function () {
 userSchema.virtual('followersCount').get(function () {
   return this.followers.length;
 });
+
 userSchema.virtual('followingCount').get(function () {
   return this.following.length;
 });
