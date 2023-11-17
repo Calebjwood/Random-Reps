@@ -1,4 +1,12 @@
 #home-page {
+    .home-page{
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.75)), url(../../assets/images/background.jpg);
+        background-size: cover;
+
+    }
+    
     h1 {
         margin: 4rem auto;
         text-align: center;
