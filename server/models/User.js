@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  username:{
+  username: {
     type: String,
     required: true,
     trim: true
@@ -29,7 +29,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  savedWorkouts: [workouts]
+  savedWorkouts: [workouts],
+
+  followers: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+
+  following: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }]
+
 });
 
 userSchema.pre('save', async function (next) {
@@ -44,5 +55,16 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.verifyPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('totalTimeInSeconds').get(function () {
+  return this.exercises.reduce((acc, exercise) => acc + exercise.time, 0);
+});
+
+userSchema.virtual('followersCount').get(function () {
+  return this.followers.length;
+});
+userSchema.virtual('followingCount').get(function () {
+  return this.following.length;
+});
 
 module.exports = mongoose.model('User', userSchema);
