@@ -1,6 +1,7 @@
 const typeDefs = `
   type User {
     _id: ID
+    username: String
     firstName: String
     lastName: String
     email: String
@@ -37,13 +38,13 @@ const typeDefs = `
     user: User
     getWorkout: Workout
     getFollowing: [User]
-    searchUsers: [User]
+    searchUsers(username: String!): [User]
   }
 
   type Mutation {
     signin(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveWorkout(title: String!, type: [String!], exercises: [Exercise!]): Workout
+    saveWorkout(title: String!, type: [String!], exercises: String): Workout
     follow(_id: Int!): User
   }
 `;
