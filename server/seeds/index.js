@@ -1,16 +1,28 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const connection = require('../config/connection');
-const { User, Workouts } = require('../models');
+const { User} = require('../models');
 const data = require("./data.json");
 const workout = require("./exercises.json")
 
+ 
 
-async function seed() {
-    await connection.dropCollection('users');
-    await User.create(data.user);
-    // await Workouts.create(workout.workout);
+
+connection.on('error', (err) => err);
+
+connection.once('open', async () => {
+    console.log('connected');
+    // Delete the collections if they exist
+    userCheck = connection.db.listCollections({name: 'users'}).toArray();
+    if (userCheck.length) {
+        await connection.dropCollection('users');
+    }
+    workoutCheck = connection.db.listCollections({name: 'workouts'}).toArray();
+    if (workoutCheck.length) {
+        await connection.dropCollection('workouts');
+    }
+
+    await User.create(data.user)
+    console.info('Seeding complete! 🌱');
     process.exit(0);
-}
-
-seed();
+});

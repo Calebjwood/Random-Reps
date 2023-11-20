@@ -5,37 +5,29 @@
         "lastName": "User",
         "email": "test@gmail.com",
         "password": "secret",
-        "savedWorkouts": [
-            {
-                "workout": {
-                    "title": "test workout",
-                    "types": ["Legs", "Traditonal"],
-                    "Exercises": [
-                        {
-                            "exercise": {
-                                "title": "Thigh Extensions",
-                                "types": ["Legs", "Traditional"],
-                                "sets": 3,
-                                "reps": 8,
-                                "rest": 90,
-                                "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI",
-                                "time": 99
-                            }
-                        },
-                        {
-                            "exercise": {
-                                "title": "Leg Curls",
-                                "types": ["Legs", "Traditional"],
-                                "sets": 3,
-                                "reps": 8,
-                                "rest": 90,
-                                "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI",
-                                "time": 99
-                            }
-                        }
-                    ]
+        "savedWorkouts": [{
+            "title": "test workout",
+            "types": ["Legs", "Traditonal"],
+            "exercises": [
+                {
+                    "title": "Thigh Extensions",
+                    "types": ["Legs", "Traditional"],
+                    "sets": 3,
+                    "reps": 8,
+                    "rest": 90,
+                    "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI",
+                    "time": 99
+                },
+                {
+                    "title": "Leg Curls",
+                    "types": ["Legs", "Traditional"],
+                    "sets": 3,
+                    "reps": 8,
+                    "rest": 90,
+                    "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI",
+                    "time": 99
                 }
-        }
-        ]
+            ]
+        }]
     }
 }
