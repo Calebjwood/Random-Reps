@@ -6,6 +6,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { StoreProvider } from './utils/store-context';
 import Nav from './components/Nav';
