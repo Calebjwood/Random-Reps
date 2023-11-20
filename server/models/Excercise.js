@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const excercisesSchema = new Schema({
+const excerciseSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -29,4 +29,4 @@ const excercisesSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Excercise', excercisesSchema);
+module.exports = excerciseSchema
