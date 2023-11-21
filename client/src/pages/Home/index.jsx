@@ -11,11 +11,9 @@ export default function Home() {
       <div className="card-footer text-center m-3">
         <h2>Find your next workout!</h2>
         <Link to="/settings">
-          <button className="btn btn-lg btn-danger">Create Matchup!</button>
+          <button className="btn btn-lg btn-danger">Generate Workout</button>
         </Link>
       </div>
-    
-      
     </div>
   );
 }
