@@ -5,6 +5,7 @@ import { USER_PROFILE } from '../../utils/actions';
 import { QUERY_USER } from '../../utils/queries';
 import { useStoreContext } from '../../utils/store-context';
 import { Container, Row, Col, Navbar } from 'react-bootstrap'
+import ActivityFeed from '../../components/ActivityFeed';
 import './style.scss';
 
 export default function Profile() {
@@ -38,7 +39,11 @@ export default function Profile() {
       </Row>
        </Container>
        <Container>
-        <Row>
+        <Row> 
+         <Col></Col>
+         <Col lg={10} className='border'>
+          <ActivityFeed />
+          </Col>
          <Col></Col>
         </Row>
        </Container>
