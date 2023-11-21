@@ -1,4 +1,5 @@
 const { User, Workout } = require('../models');
+const exercises = require('../seeds/exercises.json');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -13,8 +14,21 @@ const resolvers = {
     getWorkout: async (parent, args) => {
       // TODO: wacky code for website querying
 
+      console.log(args)
+      types = args.types;
+      let matches = [];
+      //filters to match the types
+      matches = exercises.filter((exercise) => {
+        var x = true;
+        for (type of types){
+            if (!exercise.exercise.types.includes(type)) {x = false;}
+        }
+        return x
+      })
       
-      return await Workout.find({})
+
+
+      return JSON.stringify(matches);
     },
     getFollowing: async (parent, args, context) => {
       //return an array of Users that the current user is following

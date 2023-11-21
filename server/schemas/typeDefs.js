@@ -36,7 +36,7 @@ const typeDefs = `
 
   type Query {
     user: User
-    getWorkout: Workout
+    getWorkout(types: [String]): String
     getFollowing: [User]
     searchUsers(username: String!): [User]
   }
