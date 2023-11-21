@@ -14,8 +14,6 @@ export default function Home() {
           <button className="btn btn-lg btn-danger">Generate Workout</button>
         </Link>
       </div>
-    
-      
     </div>
   );
 }
