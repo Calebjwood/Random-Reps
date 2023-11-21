@@ -1,6 +1,7 @@
 import './style.scss';
 import { useState } from 'react';
-import { Container, Form } from 'react-bootstrap'
+import { Container, Form, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import exercisesData from '../../seeds/exercises.json'
 
 const getSeedData = () => {
@@ -27,6 +28,7 @@ function Settings() {
   return (
     <Container>
       <Form>
+        <Form.Group>
         <Form.Label htmlFor="duration">Duration</Form.Label>
         {['short', 'medium', 'long'].map((id) => (
           <div key={id} className="mb-3">
@@ -40,6 +42,8 @@ function Settings() {
             />
           </div>
         ))}
+        </Form.Group>
+        <Form.Group>
         <Form.Label htmlFor="exercise-types">Types of Exercises</Form.Label>
         {workoutTypes.map((type) => (
           <div key={type} className="mb-3">
@@ -50,6 +54,12 @@ function Settings() {
             />
           </div>
         ))}
+        </Form.Group>
+         <Button variant="primary" size="lg" active>
+          <Link to="/"  style={{ color: 'inherit', textDecoration: 'inherit'}}>
+        Generate Workout
+        </Link>
+      </Button>{' '}
       </Form>
     </Container>
   );
