@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
+const excerciseSchema = require('./Excercise');
 
 const { Schema } = mongoose;
 
-const workoutsSchema = new Schema({
+const workoutSchema = new Schema({
   title: {
     type: String,
     required: true,
   },
-  type: [String],
-
-  excercises: [excercises]
+  types: [String],
+  exercises: [excerciseSchema],
 });
 
-workoutsSchema.virtual('totalTimeInSeconds').get(function () {
-  return this.exercises.reduce((acc, exercise) => acc + exercise.time, 0);
+workoutSchema.virtual('estimatedTime').get(function () {
+  return this.exercises.reduce((acc, Exercise) => acc + Exercise.time, 0);
 });
 
-module.exports = mongoose.model('Workouts', workoutsSchema);
+Workout = mongoose.model('Workout', workoutSchema);
+module.exports = {Workout, workoutSchema}
