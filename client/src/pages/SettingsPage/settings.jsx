@@ -1,11 +1,13 @@
 import './style.scss';
+import exercisesData from '../../seeds/exercises.json';
+import { Container, Form, Button } from 'react-bootstrap';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Form, Button } from 'react-bootstrap';
-import exercisesData from '../../seeds/exercises.json';
 
 const getSeedData = () => exercisesData;
 
+//Gets the type of workouts from .json file
 const getUniqueTypes = () => {
   const types = new Set();
   getSeedData().forEach(item => {
@@ -14,15 +16,19 @@ const getUniqueTypes = () => {
   return Array.from(types);
 };
 
+const workoutTypes = getUniqueTypes();
+
 function Settings() {
   const [checkedId, setCheckedId] = useState('');
   const [selectedTypes, setSelectedTypes] = useState(new Set());
   const navigate = useNavigate();
 
+  //Checks if one of the durations have been selected
   const handleCheckboxChange = (event) => {
     setCheckedId(event.target.id);
   };
 
+  //Checks which excercise have been or have not been seleceted 
   const handleTypeChange = (event) => {
     const type = event.target.id;
     setSelectedTypes(prevTypes => {
@@ -36,15 +42,12 @@ function Settings() {
     });
   };
 
-
   const handleGenerateWorkout = () => {
     console.log('Generating workout with:', { duration: checkedId, types: Array.from(selectedTypes) });
     alert('Workout generation is under development.');
     navigate('/workouts', { state: { duration: checkedId, types: Array.from(selectedTypes) } })
     // Add logic to generate workout and navigate to the next page
   };
-
-  const workoutTypes = getUniqueTypes();
 
   return (
     <Container>
@@ -61,18 +64,19 @@ function Settings() {
                 onChange={handleCheckboxChange}
                 checked={checkedId === id}
               />
-
             </div>
           ))}
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="exercise-types">Types of Exercises</Form.Label>
+          {/* Creates the different types of workoutws  */}
           {workoutTypes.map((type) => (
             <div key={type} className="mb-3">
               <Form.Check
                 type='checkbox'
                 id={type}
                 label={type}
+                /*Checks if workout is selected */
                 onChange={handleTypeChange}
                 checked={selectedTypes.has(type)}
               />
