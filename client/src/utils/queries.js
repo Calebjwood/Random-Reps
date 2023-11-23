@@ -11,7 +11,7 @@ export const QUERY_USER = gql`
       savedWorkouts {
         _id
         title
-        type
+        types
         exercises {
           title
           sets
