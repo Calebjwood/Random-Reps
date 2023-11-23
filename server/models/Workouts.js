@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const workoutSchema = new Schema({
   title: {
     type: String,
-    required: true,
   },
   types: [String],
   exercises: [excerciseSchema],

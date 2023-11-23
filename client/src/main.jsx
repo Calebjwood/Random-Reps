@@ -5,7 +5,8 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Settings from './pages/SettingsPage/settings.jsx';
-import NotFound from './pages/NotFound.jsx'
+import Workout from './pages/Workout/WorkoutPage.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 import './index.css'
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path:'/settings',
         element:<Settings />
+      },
+      {
+        path:'/workout',
+        element:<Workout />
       }
     ]
   }
