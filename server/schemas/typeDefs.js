@@ -5,7 +5,7 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
-    workouts: [Workout]
+    savedWorkouts: [Workout]
     followers: Int
     following: [User]
     followingCount: Int
@@ -25,7 +25,7 @@ const typeDefs = `
   type Workout {
     _id: ID
     title: String
-    type: [String]
+    types: [String]
     exercises: [Exercise]
     estimatedTime: Int
   }
@@ -36,7 +36,7 @@ const typeDefs = `
 
   type Query {
     user: User
-    getWorkout(types: [String]): String
+    getWorkout(types: [String]): Workout
     getFollowing: [User]
     searchUsers(username: String!): [User]
   }

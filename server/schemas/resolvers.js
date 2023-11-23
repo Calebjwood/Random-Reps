@@ -12,23 +12,26 @@ const resolvers = {
       throw AuthenticationError;
     },
     getWorkout: async (parent, args) => {
-      // TODO: wacky code for website querying
-
-      console.log(args)
+      // TODO: wacky code for workout querying and randomizing
+      
       types = args.types;
+      console.log(types)
       let matches = [];
       //filters to match the types
       matches = exercises.filter((exercise) => {
         var x = true;
         for (type of types){
-            if (!exercise.exercise.types.includes(type)) {x = false;}
+            if (!exercise.types.includes(type)) {x = false;}
         }
         return x
       })
-      
-
-
-      return JSON.stringify(matches);
+      const workout = 
+      {
+        title: "",
+        types: types,
+        exercises: matches
+      }
+      return workout;
     },
     getFollowing: async (parent, args, context) => {
       //return an array of Users that the current user is following
