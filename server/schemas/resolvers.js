@@ -1,24 +1,49 @@
 const { User, Workout } = require('../models');
+const exercises = require('../seeds/exercises.json');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
-      if (!context.user) {
-        throw AuthenticationError;
+      if (context.user) {
+        return await User.findById(context.user._id);
       }
-
-      return await User.findById(context.user._id);
+      
+      throw AuthenticationError;
     },
     getWorkout: async (parent, args) => {
-      // TODO: wacky code for website querying
-      return await Workout.find({})
+      // TODO: wacky code for workout querying and randomizing
+      
+      types = args.types;
+      console.log(types)
+      let matches = [];
+      //filters to match the types
+      matches = exercises.filter((exercise) => {
+        var x = true;
+        for (type of types){
+            if (!exercise.types.includes(type)) {x = false;}
+        }
+        return x
+      })
+      const workout = 
+      {
+        title: "",
+        types: types,
+        exercises: matches
+      }
+      return workout;
     },
     getFollowing: async (parent, args, context) => {
-      // TODO: return an array of Users that the current user is following
+      //return an array of Users that the current user is following
+      if (context.user) {
+        const user = User.findById(context.user._id);
+        return user.following;
+      };
+      throw AuthenticationError;
+
     },
     searchUsers: async (parent, args) => {
-      // TODO: return an array of users that matches the search query
+      //return an array of users that matches the search query
       return await User.find({username: args.username})
     }
   },
@@ -46,12 +71,38 @@ const resolvers = {
 
       return { token };
     },
-    saveWorkout: async (parent, {title, type, exercises}, context) => {
-      // TODO saves workout to the context users workouts array
+    saveWorkout: async (parent, args, context) => {
+      // saves workout to the context users workouts array
+
+      if (context.user) {
+        const user = User.findOneAndUpdate(
+          {id: context.user._id},
+          {$addToSet: {savedWorkouts: args}},
+          {new: true});
+
+        return user;
+      }
+      
+      throw AuthenticationError;
     },
-    follow: async (parent, {_id}, context) => {
+    follow: async (parent, {id}, context) => {
       // TODO add follower to the context users following array and update the followed
       // users following field
+      if (context.user) {
+        const user = User.findOneAndUpdate(
+          {_id: context.user._id},
+          {$addToSet: {following: id}},
+          {new: true});
+          
+        const followed = User.findOneAndUpdate(
+          {_id: id},
+          {$addToSet: {followers: context.user._id}},
+          {new: true});
+            
+        return {user, followed}
+      }
+      
+      throw AuthenticationError;
     }
   }
 };
