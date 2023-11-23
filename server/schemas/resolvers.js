@@ -48,7 +48,7 @@ const resolvers = {
     }
   },
   Mutation: {
-    signin: async (parent, args) => {
+    signup: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
