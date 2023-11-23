@@ -19,7 +19,7 @@ export default function Signup() {
 
         try {
             const { data } = await signup({
-                variables: { firstName, lastName, email, password }
+                variables: { firstName, lastName, username, email, password }
             });
             console.log(data);
             Auth.login(data.login.token);

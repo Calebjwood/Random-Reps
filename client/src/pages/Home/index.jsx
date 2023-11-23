@@ -13,6 +13,9 @@ export default function Home() {
         <Link to="/settings">
           <button className="btn btn-lg btn-danger">Generate Workout</button>
         </Link>
+        <Link to="/login">
+          <button className="btn btn-lg btn-primary">login</button>
+        </Link>
       </div>
     </div>
   );
