@@ -26,24 +26,19 @@ export default function Login() {
     }
 
     return (
-        <>
-            <form id="login-form" onSubmit={logingHandler}>
-                <div>
-                    <label htmlFor="login-form-email">Email</label>
-                    <input id="login-form-email" type="text" onChange={(evt) => setEmail(evt.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="login-form-password">Password</label>
-                    <input id="login-form-password" type="text" onChange={(evt) => setPassword(evt.target.value)} />
-                </div>
-                <div>
-                    <button type="submit" disabled={loading}>Login</button>
-                </div>
-            </form>
-            <div id='signup-button'>
-                <button>Signup</button>
-                <p> Don't have an account yet, Signup here!</p>
+        <form id="login-form" onSubmit={logingHandler}>
+            <div>
+                <label htmlFor="login-form-email">Email</label>
+                <input id="login-form-email" type="text" onChange={(evt) => setEmail(evt.target.value)} />
             </div>
-            </>
+            <div>
+                <label htmlFor="login-form-password">Password</label>
+                <input id="login-form-password" type="text" onChange={(evt) => setPassword(evt.target.value)} />
+            </div>
+            <div>
+                <button type="submit" disabled={loading}>Login</button>
+            </div>
+        </form>
+
     );
 }

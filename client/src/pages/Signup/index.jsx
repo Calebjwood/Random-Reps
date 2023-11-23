@@ -12,6 +12,7 @@ export default function Signup() {
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('')
 
     const signupHandler = async (evt) => {
         evt.preventDefault();
@@ -31,11 +32,15 @@ export default function Signup() {
         <form id="signup-form" onSubmit={signupHandler}>
             <div>
                 <label htmlFor="signup-form-first-name">First Name</label>
-                <input id="signup-form-email" type="text" onChange={(evt) => setFirstName(evt.target.value)} />
+                <input id="signup-form-first" type="text" onChange={(evt) => setFirstName(evt.target.value)} />
             </div>
             <div>
                 <label htmlFor="signup-form-last-name">Last Name</label>
-                <input id="signup-form-email" type="text" onChange={(evt) => setLastName(evt.target.value)} />
+                <input id="signup-form-last" type="text" onChange={(evt) => setLastName(evt.target.value)} />
+            </div>
+            <div>
+                <label htmlFor="signup-form-username">Username</label>
+                <input id="signup-form-username" type="text" onChange={(evt) => setUsername(evt.target.value)} />
             </div>
             <div>
                 <label htmlFor="signup-form-email">Email</label>

@@ -20,14 +20,14 @@ export default function Nav() {
 
       <div>
         <nav>
-          {Auth.loggedIn() && (
-            <>
               <Link to="/">Home</Link>
-              <Link to="/profile">Profile</Link>
               <Link to="/signup">Signup</Link>
+              {Auth.loggedIn() && (
+              <>
+              <Link to="/profile">Profile</Link>
               <div className="logout-link" onClick={() => Auth.logout()}>Logout</div>
-            </>
-          )}
+              </>
+              )}
         </nav>
 
         <img
