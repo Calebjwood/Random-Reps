@@ -22,7 +22,9 @@ export default function Signup() {
                 variables: { firstName, lastName, username, email, password }
             });
             console.log(data);
-            Auth.login(data.login.token);
+            Auth.login(data.signup.token);
+
+            
         } catch (err) {
             console.error(err);
         }
