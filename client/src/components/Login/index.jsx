@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 import './style.scss';
 
-export default function Nav() {
+export default function Login() {
     const [login, { loading }] = useMutation(LOGIN_MUTATION);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,18 +26,24 @@ export default function Nav() {
     }
 
     return (
-        <form id="login-form" onSubmit={logingHandler}>
-            <div>
-                <label htmlFor="login-form-email">Email</label>
-                <input id="login-form-email" type="text" onChange={(evt) => setEmail(evt.target.value)} />
+        <>
+            <form id="login-form" onSubmit={logingHandler}>
+                <div>
+                    <label htmlFor="login-form-email">Email</label>
+                    <input id="login-form-email" type="text" onChange={(evt) => setEmail(evt.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="login-form-password">Password</label>
+                    <input id="login-form-password" type="text" onChange={(evt) => setPassword(evt.target.value)} />
+                </div>
+                <div>
+                    <button type="submit" disabled={loading}>Login</button>
+                </div>
+            </form>
+            <div id='signup-button'>
+                <button>Signup</button>
+                <p> Don't have an account yet, Signup here!</p>
             </div>
-            <div>
-                <label htmlFor="login-form-password">Password</label>
-                <input id="login-form-password" type="text" onChange={(evt) => setPassword(evt.target.value)} />
-            </div>
-            <div>
-                <button type="submit" disabled={loading}>Login</button>
-            </div>
-        </form>
+            </>
     );
 }

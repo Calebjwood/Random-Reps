@@ -1,10 +1,13 @@
-#login-form {
+#signup-form {
     display: flex;
     flex-direction: column;
     width: 95%;
     max-width: 600px;
     margin: 5vh auto;
 
+    p {
+        margin: 0 auto;
+    }
     &>div {
         display: flex;
         justify-content: space-between;
@@ -26,23 +29,5 @@
             font-size: 1.6rem;
             margin: 1rem auto;
         }
-    }
-}
-
-#signup-button {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    max-width: 600px;
-    margin: 5vh auto;
-
-    p {
-        text-align: center;
-    }
-    button {
-        border-radius: 0.3rem;
-        padding: 0.5rem 2rem;
-        font-size: 1.6rem;
-        margin: 1rem auto;
     }
 }
