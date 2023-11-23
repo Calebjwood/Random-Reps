@@ -8,20 +8,11 @@ export const LOGIN_MUTATION = gql`
   }
 `;
 
-export const SIGNIN_MUTATION = gql`
-  mutation signin(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
-  ) {
-    signin(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
-    ) {
-      token
-    }
+
+export const SIGNUP_MUTATION = gql`
+mutation Mutation($firstName: String!, $lastName: String!, $username: String!, $email: String!, $password: String!) {
+  signup(firstName: $firstName, lastName: $lastName, username: $username, email: $email, password: $password) {
+    token
   }
+}
 `;
