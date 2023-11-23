@@ -24,6 +24,7 @@ export default function Nav() {
             <>
               <Link to="/">Home</Link>
               <Link to="/profile">Profile</Link>
+              <Link to="/signup">Signup</Link>
               <div className="logout-link" onClick={() => Auth.logout()}>Logout</div>
             </>
           )}
