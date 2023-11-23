@@ -5,7 +5,7 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
-    workouts: [Workout]
+    savedWorkouts: [Workout]
     followers: Int
     following: [User]
     followingCount: Int

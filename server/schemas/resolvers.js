@@ -8,6 +8,7 @@ const resolvers = {
         throw AuthenticationError;
       }
 
+
       return await User.findById(context.user._id);
     },
     getWorkout: async (parent, args) => {
