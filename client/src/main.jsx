@@ -7,6 +7,8 @@ import Profile from './pages/Profile';
 import Settings from './pages/SettingsPage/settings.jsx';
 import Workout from './pages/Workout/WorkoutPage.jsx';
 import NotFound from './pages/NotFound.jsx';
+// import Signup from './pages/Signup'
+import Login from './pages/Login'
 
 import './index.css'
 
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      // {
+      //   path: '/signup',
+      //   element: <Signup />
+      // },
+      {
+        path: '/login',
+        element: <Login />
       },
       {
         path: '/profile',
