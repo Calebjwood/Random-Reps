@@ -8,24 +8,39 @@ const resolvers = {
       if (context.user) {
         return await User.findById(context.user._id);
       }
-      
+
       throw AuthenticationError;
     },
     getWorkout: async (parent, args) => {
       // TODO: wacky code for workout querying and randomizing
-      
+
       types = args.types;
-      console.log(types)
+      length = args.length;
+      console.log(types);
       let matches = [];
       //filters to match the types
       matches = exercises.filter((exercise) => {
         var x = true;
-        for (type of types){
-            if (!exercise.types.includes(type)) {x = false;}
+        for (type of types) {
+          if (!exercise.types.includes(type)) { x = false; }
         }
         return x
-      })
-      const workout = 
+      });
+      //shuffles array
+      for (let i = matches.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [matches[i], matches[j]] = [matches[j], matches[i]];
+      };
+      temp = []
+      // prevents users from requesting more exercises than is available
+      length = Math.min(length, matches.length)
+
+      //pushes the requested number of exercises to the temp array
+      for (let i = 0; i < length; i++) {
+        temp.push(matches[i])
+      }
+      matches = temp;
+      const workout =
       {
         title: "",
         types: types,
@@ -44,7 +59,7 @@ const resolvers = {
     },
     searchUsers: async (parent, args) => {
       //return an array of users that matches the search query
-      return await User.find({username: args.username})
+      return await User.find({ username: args.username })
     }
   },
   Mutation: {
@@ -76,32 +91,32 @@ const resolvers = {
 
       if (context.user) {
         const user = User.findOneAndUpdate(
-          {id: context.user._id},
-          {$addToSet: {savedWorkouts: args}},
-          {new: true});
+          { id: context.user._id },
+          { $addToSet: { savedWorkouts: args } },
+          { new: true });
 
         return user;
       }
-      
+
       throw AuthenticationError;
     },
-    follow: async (parent, {id}, context) => {
+    follow: async (parent, { id }, context) => {
       // TODO add follower to the context users following array and update the followed
       // users following field
       if (context.user) {
         const user = User.findOneAndUpdate(
-          {_id: context.user._id},
-          {$addToSet: {following: id}},
-          {new: true});
-          
+          { _id: context.user._id },
+          { $addToSet: { following: id } },
+          { new: true });
+
         const followed = User.findOneAndUpdate(
-          {_id: id},
-          {$addToSet: {followers: context.user._id}},
-          {new: true});
-            
-        return {user, followed}
+          { _id: id },
+          { $addToSet: { followers: context.user._id } },
+          { new: true });
+
+        return { user, followed }
       }
-      
+
       throw AuthenticationError;
     }
   }
