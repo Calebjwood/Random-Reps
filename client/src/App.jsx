@@ -6,9 +6,9 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+import UserProvider from './utils/user-context';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { StoreProvider } from './utils/store-context';
 import Nav from './components/Nav';
 import Auth from './utils/auth'
 
@@ -35,12 +35,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <StoreProvider>
+      <UserProvider>
         <div id="app-shell">
           <Nav />
-          <Outlet /> 
+          <Outlet />
         </div>
-      </StoreProvider>
+      </UserProvider>
     </ApolloProvider>
   )
 }
