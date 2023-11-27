@@ -45,7 +45,7 @@ function Settings() {
   const handleGenerateWorkout = () => {
     console.log('Generating workout with:', { duration: checkedId, types: Array.from(selectedTypes) });
     alert('Workout generation is under development.');
-    navigate('/workouts', { state: { duration: checkedId, types: Array.from(selectedTypes) } })
+    navigate('/workout', { state: { duration: checkedId, types: Array.from(selectedTypes) } })
     // Add logic to generate workout and navigate to the next page
   };
 
