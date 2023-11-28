@@ -10,6 +10,7 @@ import UserProvider from './utils/user-context';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 import Auth from './utils/auth'
 
 import './app.scss';
@@ -39,6 +40,7 @@ function App() {
         <div id="app-shell">
           <Nav />
           <Outlet />
+          <Footer />
         </div>
       </UserProvider>
     </ApolloProvider>
