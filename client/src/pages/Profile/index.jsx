@@ -2,15 +2,35 @@ import { Container, Row, Col, Navbar } from "react-bootstrap";
 import ActivityFeed from "../../components/ActivityFeed";
 import { useUserContext } from "../../utils/user-context";
 import "./style.scss";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_SINGLE_USER } from "../../utils/queries";
+
 
 export default function Profile() {
-  const { user, loading } = useUserContext();
-  console.log(user)
+  const { userId } = useParams();
+  const { me, loading } = useUserContext();
+  let user = me;
+  
+  let isLoading = loading
+
+
+  if (userId) {
+    const { data, loading } = useQuery(QUERY_SINGLE_USER, {
+      variables: { userId },
+    })
+    isLoading = loading
+    user = data?.user;
+   
+  }
+
   return (
     <div id="profile-page">
-      {loading && <h2 className="loading-data">Loading user data...</h2>}
+      {(isLoading ) && (
+        <h2 className="loading-data">Loading user data...</h2>
+      )}
 
-      {!loading && (
+      {!isLoading && (
         <div>
           <Container>
             <Row>
@@ -26,7 +46,7 @@ export default function Profile() {
               <Col>
                 <Navbar>
                   <Navbar.Text className="fs-3 ">
-                    <a className=" text-decoration-none" href="/">
+                    <a className=" text-decoration-none" href="/settings">
                       Generate Workout
                     </a>
                   </Navbar.Text>

@@ -5,7 +5,6 @@ export default function ActivityFeed({ workouts, title }) {
     if(!workouts.length){
         return <h3>No Workouts saved</h3>
     }
-    console.log(workouts);
 
     return(
         <div>
@@ -22,7 +21,9 @@ export default function ActivityFeed({ workouts, title }) {
                   </h5>
                 )
                 )}
-            <Link>start workout</Link>
+            <Link to="/settings" >
+            <button className="btn btn-danger">start workout</button>
+                </Link>
             </div>
             ))
 

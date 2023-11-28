@@ -13,7 +13,7 @@ function Workouts() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const exercises = data?.getWorkout.exercises
-  console.log(exercises)
+  
   return (
     <Container>
       <h1>Workout Plan</h1>

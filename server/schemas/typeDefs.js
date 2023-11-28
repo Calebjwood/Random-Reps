@@ -22,6 +22,7 @@ const typeDefs = `
   }
 
   type Workout {
+    _id: ID
     title: String
     types: [String]
     exercises: [Exercise]
@@ -33,10 +34,11 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
+    user(userId: ID): User
     getWorkout(types: [String], length: Int): Workout
     getFollowing: [User]
     searchUsers(username: String!): [User]
+    me: User
   }
 
   type Mutation {
