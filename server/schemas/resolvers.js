@@ -4,13 +4,17 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
+    user: async (parent, { userId }) => {
+      return await User.findOne({ _id: userId })
+    },
+    me: async (parent, args, context) => {
       if (context.user) {
         return await User.findById(context.user._id);
       }
 
       throw AuthenticationError;
     },
+
     getWorkout: async (parent, args) => {
       // TODO: wacky code for workout querying and randomizing
 

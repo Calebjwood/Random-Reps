@@ -12,7 +12,7 @@ const Nav = () => {
   const { data, loading } = useQuery(SEARCH_USERS, {variables: {username:search}})
   const handleClick = (e) => {
     e.preventDefault()
-    console.log(data)
+    
   }
 
   return (
