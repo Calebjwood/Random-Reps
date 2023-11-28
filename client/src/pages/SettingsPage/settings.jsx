@@ -5,6 +5,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const getSeedData = () => exercisesData;
 
 //Gets the type of workouts from .json file
@@ -44,10 +45,8 @@ function Settings() {
 
   const handleGenerateWorkout = () => {
     console.log('Generating workout with:', { length: numExercises, types: Array.from(selectedTypes) });
-    alert('Workout generation is under development.');
-    navigate('/workout', { state: { length: numExercises, types: Array.from(selectedTypes) } })
     // Add logic to generate workout and navigate to the next page
-    
+    navigate('/workout', { state: { length: numExercises, types: Array.from(selectedTypes)} })
 
   };
 
