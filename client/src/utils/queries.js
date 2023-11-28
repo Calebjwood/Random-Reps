@@ -25,15 +25,20 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_WORKOUTS = gql`
-  {
-    workouts {
-      _id
+query GetWorkout($types: [String], $length: Int) {
+  getWorkout(types: $types, length: $length) {
+    title
+    types
+    exercises {
       title
-      types
-      exercises
+      sets
+      reps
+      rest
+      link
     }
   }
-`
+}
+`;
 export const SEARCH_USERS = gql`
 query SearchUsers($username: String!) {
   searchUsers(username: $username) {

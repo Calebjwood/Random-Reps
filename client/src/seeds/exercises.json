@@ -1,32 +1,176 @@
 [   
     {
-        "exercise": {
-            "title": "Bicep Curls",
-            "types": ["Arms", "Traditional"],
-            "sets": 4,
-            "reps": 8,
-            "rest": 90,
-            "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
-        }
+        "title": "Bicep Curls",
+        "types": ["Arms", "Traditional"],
+        "sets": 4,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
     },
     {
-        "exercise": {
-            "title": "Thigh Extensions",
-            "types": ["Legs", "Traditional"],
-            "sets": 3,
-            "reps": 8,
-            "rest": 90,
-            "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
-        }
+        "title": "Thigh Extensions",
+        "types": ["Legs", "Traditional"],
+        "sets": 3,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+        
     },
     {
-        "exercise": {
-            "title": "Leg Curls",
-            "types": ["Legs", "Traditional"],
-            "sets": 3,
-            "reps": 8,
-            "rest": 90,
-            "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
-        }
+        "title": "Leg Curls",
+        "types": ["Legs", "Traditional"],
+        "sets": 3,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+        
+    },
+    {
+
+        "title": "Calf Raises",
+        "types": ["Legs", "Traditional"],
+        "sets": 3,
+        "reps": 12,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+        
+    },
+    {
+
+        "title": "Push Ups",
+        "types": ["Chest", "Traditional", "Arms", "Calisthenics"],
+        "sets": 3,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+        
+    },
+    {
+        "title": "Sit Ups",
+        "types": ["Abs", "Traditional"],
+        "sets": 3,
+        "reps": 20,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Wall Pulls",
+        "types": ["Back", "Calisthenics"],
+        "sets": 3,
+        "reps": 10,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Feet Supported Pull Ups",
+        "types": ["Back", "Calisthenics"],
+        "sets": 3,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Pull Ups",
+        "types": ["Back", "Calisthenics", "Traditional"],
+        "sets": 4,
+        "reps": 8,
+        "rest": 120,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Chin Ups",
+        "types": ["Back", "Arms", "Calisthenics"],
+        "sets": 4,
+        "reps": 8,
+        "rest": 120,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Kneeling Pike Push Ups",
+        "types": ["Chest", "Calisthenics"],
+        "sets": 4,
+        "reps": 8,
+        "rest": 120,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Air Squat",
+        "types": ["Legs", "Calisthenics"],
+        "sets": 4,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Box Squat",
+        "types": ["Legs", "Calisthenics"],
+        "sets": 4,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Wall Sit",
+        "types": ["Legs", "Calisthenics"],
+        "sets": 3,
+        "reps": 1,
+        "rest": 60,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Pistol Squat",
+        "types": ["Legs", "Calisthenics"],
+        "sets": 3,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Box Jumps",
+        "types": ["Legs", "Calisthenics"],
+        "sets": 3,
+        "reps": 8,
+        "rest": 90,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    }, 
+    {
+        "title": "Back Squat",
+        "types": ["Legs", "Traditional"],
+        "sets": 5,
+        "reps": 5,
+        "rest": 180,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Bench Press",
+        "types": ["Chest", "Traditional"],
+        "sets": 5,
+        "reps": 5,
+        "rest": 180,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Bent Over Barbell Row",
+        "types": ["Back", "Traditional"],
+        "sets": 5,
+        "reps": 5,
+        "rest": 180,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Overhead Press",
+        "types": ["Chest", "Traditional"],
+        "sets": 5,
+        "reps": 5,
+        "rest": 180,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
+    },
+    {
+        "title": "Deadlift",
+        "types": ["Legs", "Back","Traditional"],
+        "sets": 5,
+        "reps": 5,
+        "rest": 180,
+        "link": "https://www.youtube.com/embed/dQw4w9WgXcQ?si=M11F5pkyT-HzKgfI"
     }
 ]

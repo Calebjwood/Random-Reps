@@ -11,7 +11,7 @@ const getSeedData = () => exercisesData;
 const getUniqueTypes = () => {
   const types = new Set();
   getSeedData().forEach(item => {
-    item.exercise.types.forEach(type => types.add(type));
+    item.types.forEach(type => types.add(type));
   });
   return Array.from(types);
 };
@@ -19,13 +19,13 @@ const getUniqueTypes = () => {
 const workoutTypes = getUniqueTypes();
 
 function Settings() {
-  const [checkedId, setCheckedId] = useState('');
+  const [numExercises, setNumExercises] = useState('');
   const [selectedTypes, setSelectedTypes] = useState(new Set());
   const navigate = useNavigate();
 
   //Checks if one of the durations have been selected
-  const handleCheckboxChange = (event) => {
-    setCheckedId(event.target.id);
+  const handleInputChange = (event) => {
+    setNumExercises(event.target.value);
   };
 
   //Checks which excercise have been or have not been seleceted 
@@ -43,30 +43,27 @@ function Settings() {
   };
 
   const handleGenerateWorkout = () => {
-    console.log('Generating workout with:', { duration: checkedId, types: Array.from(selectedTypes) });
+    console.log('Generating workout with:', { length: numExercises, types: Array.from(selectedTypes) });
     alert('Workout generation is under development.');
-    navigate('/workout', { state: { duration: checkedId, types: Array.from(selectedTypes) } })
+    navigate('/workout', { state: { length: numExercises, types: Array.from(selectedTypes) } })
     // Add logic to generate workout and navigate to the next page
+    
+
   };
 
   return (
     <Container>
       <Form>
         <Form.Group>
-          <Form.Label htmlFor="duration">Duration</Form.Label>
-          {['short', 'medium', 'long'].map((id) => (
-            <div key={id} className="mb-3">
-              <Form.Check
-                type='radio'
-                id={id}
-                name='duration'
-                label={id.charAt(0).toUpperCase() + id.slice(1)}
-                onChange={handleCheckboxChange}
-                checked={checkedId === id}
-              />
-            </div>
-          ))}
+          <Form.Label htmlFor="workout-length">Number of Exercises</Form.Label>
+          <Form.Control
+            type="input"
+            id="workout-length"
+            name='Number of Exercises'
+            onChange={handleInputChange}
+          />
         </Form.Group>
+
         <Form.Group>
           <Form.Label htmlFor="exercise-types">Types of Exercises</Form.Label>
           {/* Creates the different types of workoutws  */}

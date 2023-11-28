@@ -5,7 +5,7 @@ import exerciseData from '../../seeds/exercises.json'
 
 function Workouts() {
   const location = useLocation();
-  const { duration, types } = location.state;
+  const { length, types } = location.state;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -14,8 +14,8 @@ function Workouts() {
   return (
     <Container>
       <h1>Workout Plan</h1>
-      <p>Duration: {duration}</p>
-      <p>Exercise Types:</p>
+      <p>Number of Exercises: {length}</p>
+      <p>Exercise Types: {types.join(' ')}</p>
       <ListGroup>
 
         <Card>
