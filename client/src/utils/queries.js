@@ -34,3 +34,20 @@ export const QUERY_WORKOUTS = gql`
     }
   }
 `
+export const SEARCH_USERS = gql`
+query SearchUsers($username: String!) {
+  searchUsers(username: $username) {
+    _id
+    username
+    savedWorkouts {
+      exercises {
+        title
+        sets
+        reps
+        rest
+        time
+      }
+    }
+  }
+}
+`
