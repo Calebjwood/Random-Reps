@@ -34,6 +34,7 @@ const typeDefs = `
   }
 
   type Query {
+    users: [User]!
     user(userId: ID): User
     getWorkout(types: [String], length: Int): Workout
     getFollowing: [User]

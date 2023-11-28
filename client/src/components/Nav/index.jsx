@@ -1,20 +1,35 @@
 import { Link } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
-import { SEARCH_USERS } from "../../utils/queries"
+import {  QUERY_USERS } from "../../utils/queries"
 import Auth from "../../utils/auth";
 import logo from '../../assets/images/logo.png';
 import './style.scss';
 import { useQuery } from "@apollo/client";
 
+
 const Nav = () => {
   const [search, setSearch ] = useState('')
-  const { data, loading } = useQuery(SEARCH_USERS, {variables: {username:search}})
+  const [show, setShow] = useState(false);
+  const [userData, setUserData] = useState([])
+  const { data, loading } = useQuery(QUERY_USERS)
+  const handleClose = () => setShow(false);
+  
   const handleClick = (e) => {
     e.preventDefault()
-    let searchId = data.searchUsers[0]._id
-   
-    window.location.assign(`/profile/${searchId}`)
+     let array = []
+    
+    for(let i = 0; i < data.users.length; i++){
+    if(data.users[i].username.includes(search))
+      array.push(data.users[i])
+    }
+    if(array){
+    setUserData(array)
+  }
+    
+   setShow(true);
+    
+    
   }
 
   return (
@@ -46,6 +61,20 @@ const Nav = () => {
             </>
           )}
         </nav>
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+                    <Modal.Title>Search User</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                 {userData.map((user) => (
+                    <Link to={'/profile/' + user._id}>
+                    <h5>{user.username}</h5>
+                    </Link>
+                 ))}
+                </Modal.Body>
+                <Modal.Footer>
+                </Modal.Footer>
+            </Modal>
       </div>
     </header>
   );
