@@ -12,7 +12,9 @@ const Nav = () => {
   const { data, loading } = useQuery(SEARCH_USERS, {variables: {username:search}})
   const handleClick = (e) => {
     e.preventDefault()
-    
+    let searchId = data.searchUsers[0]._id
+   
+    window.location.assign(`/profile/${searchId}`)
   }
 
   return (
