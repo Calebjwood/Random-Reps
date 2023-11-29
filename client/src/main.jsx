@@ -43,6 +43,10 @@ const router = createBrowserRouter([
         element:<Workout />
       },
       {
+        path:'/workout/:workoutId',
+        element: <Workout />
+      },
+      {
         path:'/profile/:userId',
         element: <Profile />
       }
