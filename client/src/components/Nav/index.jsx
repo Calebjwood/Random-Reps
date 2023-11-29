@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Form, Button, Modal } from "react-bootstrap";
+import { Form, Button, Modal, Navbar, Nav, } from "react-bootstrap";
 import { useState } from "react";
 import {  QUERY_USERS } from "../../utils/queries"
 import Auth from "../../utils/auth";
@@ -8,12 +8,13 @@ import './style.scss';
 import { useQuery } from "@apollo/client";
 
 
-const Nav = () => {
+const Navigation = () => {
   const [search, setSearch ] = useState('')
   const [show, setShow] = useState(false);
   const [userData, setUserData] = useState([])
   const { data, loading } = useQuery(QUERY_USERS)
   const handleClose = () => setShow(false);
+  const isLoggedIn = Auth.loggedIn();
   
   const handleClick = (e) => {
     e.preventDefault()
@@ -34,15 +35,29 @@ const Nav = () => {
 
   return (
     <header>
-      <div>
-        <img className="header-logo" src={logo} alt="Logo" />
-      </div>
-
-      <div>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
+      <Navbar expand="sm" className="custom-nav">
+        <Navbar.Brand>
+          <img className="header-logo" src={logo} alt="Logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto my-2 my-sm-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            {!isLoggedIn && (
+              <>
+                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+              </>
+            )}
+            {isLoggedIn && (
+              <>
+                <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                <Nav.Link className="logout-link" as={Link} to={"/"} onClick={() => Auth.logout()}>Logout</Nav.Link>
+              </>
+            )}
+          </Nav>
           <Form className="d-flex ml-auto" style={{ paddingLeft: '1rem' }} >
             <Form.Control
               type="search"
@@ -54,13 +69,8 @@ const Nav = () => {
             />
             <Button variant="outline-success" type="submit" onClick={(e) => handleClick(e) }>Search </Button>
           </Form>
-          {Auth.loggedIn() && (
-            <>
-              <Link to="/profile">Profile</Link>
-              <div className="logout-link" onClick={() => Auth.logout()}>Logout</div>
-            </>
-          )}
-        </nav>
+          </Navbar.Collapse>
+        </Navbar>
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
                     <Modal.Title>Search User</Modal.Title>
@@ -75,9 +85,9 @@ const Nav = () => {
                 <Modal.Footer>
                 </Modal.Footer>
             </Modal>
-      </div>
+      
     </header>
   );
 }
 
-export default Nav
+export default Navigation
