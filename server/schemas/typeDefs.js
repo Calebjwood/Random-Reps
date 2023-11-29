@@ -40,6 +40,7 @@ const typeDefs = `
     getFollowing: [User]
     searchUsers(username: String!): [User]
     me: User
+    getWorkoutById(id: ID!): Workout
   }
 
   type Mutation {

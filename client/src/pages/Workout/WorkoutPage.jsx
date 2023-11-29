@@ -1,24 +1,42 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Container, ListGroup, Modal, Card, Button } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { QUERY_WORKOUTS } from '../../utils/queries';
+import { QUERY_WORKOUTS, QUERY_WORKOUTS_BY_ID } from '../../utils/queries';
 
 function Workouts() {
   const location = useLocation();
-  const { length, types } = location.state;
+  const { workoutId } = useParams();
+  const { length, types } = location.state || {};
   const [show, setShow] = useState(false);
-  const { data} = useQuery(QUERY_WORKOUTS, { variables: { types: types, length: parseInt(length) } })
+
+  const newWorkout = useQuery(QUERY_WORKOUTS, {
+    variables: { types: types, length: parseInt(length) },
+    skip: !length || !types
+  });
+
+  const savedWorkout = useQuery(QUERY_WORKOUTS_BY_ID, {
+    variables: { getWorkoutByIdId: workoutId },
+    skip: !workoutId
+  });
+
+  const workoutData = workoutId ? savedWorkout.data?.getWorkoutById : newWorkout.data?.getWorkout;
+  const exercises = workoutData?.exercises;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const exercises = data?.getWorkout.exercises
-  
+
   return (
     <Container>
       <h1>Workout Plan</h1>
-      <p>Number of Exercises: {length}</p>
-      <p>Exercise Types: {types.join(' ')}</p>
+      {workoutId ? (
+        <p>Workout ID: {workoutId}</p>
+      ) : (
+        <>
+          <p>Number of Exercises: {length}</p>
+          <p>Exercise Types: {types.join(' ')}</p>
+        </>
+      )}
       <ListGroup>
         {exercises?.map(({ title, sets, reps, rest, link }) => (
           <div key={title}>
@@ -57,7 +75,6 @@ function Workouts() {
             </Card>
           </div>
         ))}
-
       </ListGroup>
       <Button variant="primary" size="lg" >
         Save Workout
