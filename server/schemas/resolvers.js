@@ -17,6 +17,14 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    getWorkoutById: async (parent, { id }) => {
+      const userWithWorkout = await User.findOne({ "savedWorkouts._id": id });
+      if (!userWithWorkout) {
+        return null;
+      }
+      const workout = userWithWorkout.savedWorkouts.find(workout => workout._id.toString() === id);
+      return workout;
+    },
 
     getWorkout: async (parent, args) => {
       // TODO: wacky code for workout querying and randomizing
