@@ -9,14 +9,37 @@ query Users {
 }
  `;
 
-
 export const QUERY_SINGLE_USER = gql`
-query singleUser($userId: ID!) {
-    user(userId: $userId) {
+ query singleUser($userId: ID!) {
+   user(userId: $userId) {
+     _id
+     username
+     firstName
+     lastName
+     email
+     savedWorkouts {
+       _id
+       title
+       types
+       exercises {
+         title
+         sets
+         reps
+         rest
+        }
+        estimatedTime
+      }
+    }
+  }
+  `;
+
+export const QUERY_ME = gql`
+  {
+    me {
       _id
       username
       firstName
-     lastName
+      lastName
       email
       savedWorkouts {
         _id
@@ -24,31 +47,6 @@ query singleUser($userId: ID!) {
         types
         exercises {
           title
-          sets
-          reps
-          rest
-        }
-        estimatedTime
-      }
-    }
-  }
- `;
-
-
-export const QUERY_ME = gql`
-{
-  me {
-    _id
-    username
-    firstName
-    lastName
-    email
-    savedWorkouts {
-      _id
-      title
-      types
-      exercises {
-        title
         sets
         reps
         rest
@@ -74,6 +72,25 @@ query GetWorkout($types: [String], $length: Int) {
   }
 }
 `;
+
+export const QUERY_WORKOUTS_BY_ID = gql`
+query GetWorkoutById($getWorkoutByIdId: ID!) {
+  getWorkoutById(id: $getWorkoutByIdId) {
+    _id
+    title
+    types
+    exercises {
+      title
+      types
+      sets
+      reps
+      rest
+      link
+    }
+  }
+}
+`;
+
 export const SEARCH_USERS = gql`
 query SearchUsers($username: String!) {
   searchUsers(username: $username) {
@@ -90,4 +107,4 @@ query SearchUsers($username: String!) {
     }
   }
 }
-`
+`;
