@@ -75,7 +75,6 @@ function Workouts() {
             </Card>
           </div>
         ))}
-
       </ListGroup>
       <Button variant="primary" size="lg" >
         Save Workout
