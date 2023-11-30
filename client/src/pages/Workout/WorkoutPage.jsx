@@ -20,6 +20,10 @@ function Workouts() {
     skip: !workoutId
   });
 
+  const clickHandler = () => {
+    window.location.assign('/profile')
+  }
+
   const workoutData = workoutId ? savedWorkout.data?.getWorkoutById : newWorkout.data?.getWorkout;
   const exercises = workoutData?.exercises;
 
@@ -76,7 +80,7 @@ function Workouts() {
           </div>
         ))}
       </ListGroup>
-      <Button variant="primary" size="lg" >
+      <Button variant="primary" size="lg" onClick={clickHandler}>
         Save Workout
       </Button>
     </Container>
