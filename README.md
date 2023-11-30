@@ -39,4 +39,4 @@ Users can expect the following app functionality:
 
 ## Deployed Application
 
-[Here is a link to the deployed application!](https://afternoon-everglades-28793-2b4d32cb92bf.herokuapp.com/)
+[Here is a link to the deployed application!](https://sheltered-reef-80402-18819911d5a4.herokuapp.com/)
