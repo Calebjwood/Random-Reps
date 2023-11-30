@@ -1,4 +1,4 @@
-# DINE HARD
+# Random Reps
 
 Welcome to Random-Reps! A website that takes care of your workout needs. In hurry and don't know have a workout, then just select which exercises you want and hit generate workout.
 
