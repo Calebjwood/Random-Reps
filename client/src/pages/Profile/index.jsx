@@ -35,13 +35,10 @@ export default function Profile() {
           <Container>
             <Row>
               <Col className="d-flex align-items-center">
+                {/* <h3>Followers</h3> */}
+              </Col>
+              <Col className="d-flex align-items-center">
                 <h3>{user.username}</h3>
-              </Col>
-              <Col className="d-flex align-items-center">
-                <h3>Followers</h3>
-              </Col>
-              <Col className="d-flex align-items-center">
-                <h3>Following</h3>
               </Col>
               <Col>
                 <Navbar>
@@ -51,6 +48,9 @@ export default function Profile() {
                     </a>
                   </Navbar.Text>
                 </Navbar>
+              </Col>
+              <Col className="d-flex align-items-center">
+                {/* <h3>Following</h3> */}
               </Col>
             </Row>
           </Container>

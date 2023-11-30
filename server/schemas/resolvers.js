@@ -31,7 +31,6 @@ const resolvers = {
 
       types = args.types;
       length = args.length;
-      console.log(types);
       let matches = [];
       //filters to match the types
       matches = exercises.filter((exercise) => {
